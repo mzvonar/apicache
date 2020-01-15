@@ -1,8 +1,8 @@
 {
   "name": "apicache",
-  "version": "1.0.0",
+  "version": "1.5.3",
   "scripts": {
-    "lint": "eslint **/*.js",
+    "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "nyc mocha $(find test -name '*.test.js') --recursive",
     "test:watch": "npm run test -- --watch",
@@ -10,7 +10,7 @@
     "prepublish": "npm run test"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.2.0 <13"
   },
   "description": "An ultra-simplified API response caching middleware for Express/Node using plain-english durations.",
   "main": "./src/apicache.js",
@@ -30,24 +30,32 @@
     "middleware",
     "memory"
   ],
-  "author": "Kevin R. Whitley <kevin3503@gmail.com> (http://krwhitley.com)",
+  "author": "Kevin R. Whitley <krwhitley@gmail.com> (http://krwhitley.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kwhitley/apicache/issues",
-    "email": "kevin3503@gmail.com"
+    "email": "krwhitley@gmail.com"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "compression": "^1.7.0",
-    "coveralls": "^2.13.1",
-    "eslint": "^4.6.1",
-    "express": "^4.15.4",
+    "chai": "^4.2.0",
+    "compression": "^1.7.4",
+    "coveralls": "^3.0.6",
+    "eslint": "^4.18.0",
+    "express": "^4.17.1",
     "fakeredis": "^2.0.0",
-    "mocha": "^3.5.0",
-    "nyc": "^11.2.1",
-    "restify": "^5.2.0",
+    "husky": "^3.0.4",
+    "mocha": "^7.0.0",
+    "nyc": "^13.3.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "restify": "^7.7.0",
     "restify-etag-cache": "^1.0.12",
-    "supertest": "^3.0.0"
+    "supertest": "^4.0.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run test"
+    }
+  }
 }
